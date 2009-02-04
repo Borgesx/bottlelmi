@@ -1,0 +1,176 @@
+% \documentclass[letterpaper,10pt,onecolumn,journal,final]{IEEEtran}
+\linespread{2}
+% \documentclass[letterpaper,10pt,twocolumn,journal,final]{IEEEtran}
+\documentclass[letterpaper,10pt,conference,twocolumn]{IEEEtran}
+% \documentclass[a4paper,10pt,onecolumn]{IEEEtran}
+% \documentclass[a4paper, 10pt, conference]{ieeeconf}
+%\documentclass[draft,a4paper,10pt,onecolumn]{ieeeconf}
+
+\IEEEoverridecommandlockouts
+
+\usepackage[active]{srcltx}
+
+\usepackage{epsfig}
+\usepackage{amsmath}
+%\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{psfrag}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\bibliographystyle{IEEEtran}
+
+\graphicspath{{../figure/}}
+
+\newtheorem{dfn}{Definition}
+% \newtheorem{not}[]{Notation}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{obs}{Observation}
+% \newtheorem{definition}{Definition}
+
+\newcommand{\sat}{\mathrm{sat}}
+\newcommand{\eps}{\epsilon}
+\newcommand{\csi}{\xi}
+\newcommand{\sect}{\mathrm{sect}}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\w}{\omega}
+\newcommand{\Csi}{\Xi}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\ellips}{\mathcal{E}}
+
+\title{Less conservative absolute stability criteria using Integral Quadratic Constraints}
+% \author{}
+\author{
+	Donatello Materassi\IEEEauthorrefmark{1} and
+	Murti V.~Salapaka\IEEEauthorrefmark{7} \medskip\\
+		Department of Electrical and Computer Engineering,\\
+		University of Minnesota,\\
+		200 Union St SE, 55455, Minneapolis (MN) \\
+	\IEEEauthorrefmark{1}
+		{\tt\small mater013@umn.edu} \medskip \qquad
+	\IEEEauthorrefmark{7}
+		{\tt\small murtis@umn.edu}
+}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+\begin{abstract}
+	This paper is a shame.
+\end{abstract}
+
+\section{Introduction}
+\begin{itemize}
+	\item	The problem of considering ``persistent signals'' is a relevant one
+	\item	Specify the there is no framework to deal with them because it is problematic
+	\item	It allows a definition of I/O practical stability
+	\item	It allows one to manage forced systems and stability of attractors different from equilibria
+	\item	It allows one to manage stochastic signal (in a conservative way) and this problem is formidable in the nonlinear scenario
+\end{itemize}
+
+
+\section{Notation}\label{sec:notation}
+\begin{dfn}
+	We define the operator $P_{[t_1, t_2]}:L_{2e}\rightarrow L_{2e}$
+	\begin{align}
+		P_{[t_1, t_2]}y=\chi_{[t_1,t_2]}y
+	\end{align}
+\end{dfn}
+
+\section{Basic Definitions}\label{sec:definitions}
+Suppose $\Pi: i\Re \rightarrow C^{(l+m)\times (l+m)}$ is a bounded measurable function with Hermitian values. For any $\w$, consider the quadratic form
+\begin{align}
+	\pi(\hat v(\w), \hat u(\w))=
+		\left(\begin{array}{c}
+			\hat v(\w)\\
+			\hat u(\w)
+		\end{array}\right)^*
+		\Pi(i\w)
+		\left(\begin{array}{c}
+			\hat v(\w)\\
+			\hat u(\w)
+		\end{array}\right).
+\end{align}
+\begin{dfn}
+	We say that the IQC with window $w$, bias $M$ and multiplier $\Pi(i\w)$ is satisfied if and only if
+	\begin{align}
+		bla~bla
+	\end{align}
+\end{dfn}
+
+
+
+\section{Preliminary Results}\label{sec:prelim}
+
+\begin{thm}
+	Let $v_1(t), v_2(t)$ and $u(t)$ be three $L_{2w}$ signals. Then
+	Then, there exists $w>0$ such that
+	\begin{align}
+		\int_{T}^{T+w}
+			\left(\begin{array}{c}
+				v_1(t)+v_2(t)\\ u(t)
+			\end{array}\right)^T
+			\Sigma
+			\left(\begin{array}{c}
+				v_1(t)+v_2(t)\\ u(t)
+			\end{array}\right)
+		dt
+		\leq\\
+		\leq C (\|u\|_w^2 + \eta\|v_1\|_w^2 + \eta\|v_2\|_w^2) 
+	\end{align}
+	for any $u\in L_{2w}$ and $T\in\Real$.
+\end{thm}
+
+
+\begin{thm}
+	Let $G(s)$ be a transfer function with pulse-response $g(t)$.
+	Assume that
+	\begin{equation}
+		\lim_{t\rightarrow \infty}|g(t)|^2=0
+	\end{equation}
+% 	\begin{equation}
+% 		g(t)\in L_2
+% 	\end{equation}
+	and that there exist $\eps>0$ and a matrix $\Sigma=\Sigma^T$ such that
+	\begin{align}
+		\left(\begin{array}{c}
+			G(i\w)\\ I
+		\end{array}\right)^*
+		\Sigma
+		\left(\begin{array}{c}
+			G(i\w)\\ I
+		\end{array}\right)
+		\leq -\eps |G(i\w)|^2
+		\qquad \text{for any } \w\in\Re
+	\end{align}
+	Then, for any $\eta>0$, there exists $w>0$ such that
+	\begin{align}
+		\int_{T}^{T+w}
+			\left(\begin{array}{c}
+				Gu(t)\\ u(t)
+			\end{array}\right)^*
+			\Sigma
+			\left(\begin{array}{c}
+				Gu(t)\\ u(t)
+			\end{array}\right)
+		dt
+		\leq
+		-\eps \int_{T}^{T+w}
+			|Gu(t)|^2 dt + \eta\|u\|_w
+	\end{align}
+	for any $u\in L_{2w}$
+\end{thm}
+
+
+\section{Main Results}\label{sec:main}
+
+\section{Conclusion}
+
+\end{document}
